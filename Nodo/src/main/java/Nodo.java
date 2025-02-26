@@ -3,18 +3,18 @@ import java.net.*;
 
 public class Nodo {
     public static void main(String[] args) {
-        int puerto = 31010;
+
+        int puerto = 20020;
 
         try (ServerSocket serverSocket = new ServerSocket(puerto)) {
-            System.out.println("Nodo esperando conexiones en el puerto " + puerto + "...");
+            System.out.println("Nodo listo y recibiendo" + puerto + "...");
 
             while (true) {
                 Socket socket = serverSocket.accept();
-                System.out.println("Cliente conectado desde " + socket.getInetAddress());
-
+                System.out.println("Conexión recibida desde: " + socket.getInetAddress());
                 OutputStream output = socket.getOutputStream();
                 PrintWriter writer = new PrintWriter(output, true);
-                writer.println("Se ha establecido conexión al nodo");
+                writer.println("Conexión establecida");
 
                 socket.close();
             }
